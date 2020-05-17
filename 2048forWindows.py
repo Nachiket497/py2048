@@ -21,20 +21,10 @@ def Start_Game():
 # to set size of board
     size_board =  int(input("enter the size of board : ")) 
     size_board = 5 if size_board < 0 else size_board
-# to check and set the end tile number
-    end_num = int(input("enter the number of end tile : "))
-    x = end_num
-    isPowOf2 = False
-# to check the input number is power of 2 or not
-    while  x > 0 :
-        x = x / 2
-        if x==1 or x==2 or x==4 or x==8 :
-            isPowOf2 =True
-            break
-
-    if isPowOf2 == False:
-        print("the number enter by you is not power of 2 so number on end tile is set to 2048")
-        end_num = 2048
+# to set the end tile number
+    print("the number on end tile should be power of 2 if it is not then it will set to power of 2 higher than given number")
+    end_num = int(input("enter the number on end tile : "))
+    
     return size_board , end_num
 
 # to set initial setup of the game
@@ -130,7 +120,7 @@ def iswin(game_array , end_num):
     l = len(game_array)
     for i in range(l):
         for j in range(l):
-            if game_array[i][j] == end_num:
+            if game_array[i][j] >= end_num:
                 return True
     return False
 
